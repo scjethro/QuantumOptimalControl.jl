@@ -14,6 +14,8 @@ struct ClosedStateTransfer <: ClosedProblem
     control_ham
     initial_state
     final_state
+    optimal_pulse # each problem can have either one or a list of optimal pulses associated with it, 
+    # we can then update the amplitude and phases of these as we go?
 
     function ClosedStateTransfer(dh, ch, is, fs)
         new(dh, ch, is, fs)
