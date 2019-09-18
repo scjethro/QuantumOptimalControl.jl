@@ -14,10 +14,10 @@ function dCRAB(problem)
     dt = 0.01
 
 
-    freq_list = rand(max_si,n_pulses) * max_freq
+    freq_list = rand(max_si, n_pulses) * max_freq
     # this is a list of frequencies initially
     # of the form
-    # pulse 1 | pulse 2 | pulse 3 
+    # pulse 1 | pulse 2 | pulse 3
     # si1 freq1 | si1 freq2 | si1 freq3
 
     # for each frequency you need two coefficients, a and b
@@ -28,7 +28,7 @@ function dCRAB(problem)
 
     coefficient_list = reshape(coefficient_list, (max_si, n_pulses))
     # this is a list of coefficients of the form
-    #     pulse 1 | pulse 2 | pulse 3 
+    # pulse 1 | pulse 2 | pulse 3
     # si1 (A, B) | (A, B) | (A,B)
 
 
@@ -41,7 +41,7 @@ function dCRAB(problem)
 
         function fn_to_opt(x)
             # here x is a flat list of coefficients
-            # we reshape it             
+            # we reshape it
             c_list = []
             for i in range(1, x, step = n_pulses)
                 append!(c_list, [(x[i], x[i+1])])
@@ -67,7 +67,7 @@ function dCRAB(problem)
             # t=0.0
             # t=dt etc.
 
-            # does it actually make sense to instead base everything about optimal pulses? 
+            # does it actually make sense to instead base everything about optimal pulses?
 
             # we generate an optimal pulse here
             pulse = OptimalPulse(z[:,1], z[:,2], problem.duration)
@@ -85,7 +85,7 @@ function dCRAB(problem)
         # save the results of the optimsiation
         c_list = res.minimizer
     end
-end      
+end
 
 
 
