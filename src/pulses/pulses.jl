@@ -17,9 +17,10 @@ struct OptimalPulse{T<:AbstractFloat} <: Pulse
 
 end
 
+# 31ns median when benchmarking
 function _amp_ph_t(c::Pulse, t::AbstractFloat)::Tuple{AbstractFloat, AbstractFloat}
     # since we know the duration of the pulse and we know the time then we just compute the index
-    ii = Int(t/c.duration * length(c.amplitude))
+    ii = Int(floor(t/c.duration * length(c.amplitude)))
     # catch all cases    
     if ii == 0
         ii = 1
