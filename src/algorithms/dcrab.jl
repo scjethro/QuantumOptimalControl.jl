@@ -17,8 +17,9 @@ function dCRAB(problem)
     freq_list = rand(max_si, n_pulses) * max_freq
     # this is a list of frequencies initially
     # of the form
-    # pulse 1 | pulse 2 | pulse 3
-    # si1 freq1 | si1 freq2 | si1 freq3
+    # si1 freq_pulse1 | si1 freq_pulse2 | si1 freq_pulse3
+    # si2 freq_pulse1 | si2 freq_pulse2 | si2 freq_pulse3
+    # si3 freq_pulse1 | si3 freq_pulse2 | si3 freq_pulse3
 
     # for each frequency you need two coefficients, a and b
     coefficient_list = []
@@ -29,7 +30,7 @@ function dCRAB(problem)
     coefficient_list = reshape(coefficient_list, (max_si, n_pulses))
     # this is a list of coefficients of the form
     # pulse 1 | pulse 2 | pulse 3
-    # si1 (A, B) | (A, B) | (A,B)
+    # si1 (A, B) | (A, B) | (A, B)
 
 
     for i in range(1, stop = max_si)
