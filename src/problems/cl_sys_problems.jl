@@ -32,10 +32,12 @@ struct ClosedStateTransfer <: ClosedProblem
     # each problem can have either one or a list of optimal pulses associated with it, 
     # we can then update the amplitude and phases of these as we go?
     optimal_pulse::AbstractArray{OptimalPulse,1}
+    dimension::Integer
 
-    function ClosedStateTransfer(dh, ch, is, fs)
+    function ClosedStateTransfer(dh, ch, is, fs, dim)
+        # in theory someone could actually specify this as their initial guess pulse
         op = OptimalPulse([], [], 0.0) # just a generic optimal pulse with no initial values
-        new(dh, ch, is, fs, op)
+        new(dh, ch, is, fs, op, dim)
     end
 end
 
