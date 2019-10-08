@@ -4,6 +4,9 @@
 # also want a function to expand the control matrices properly
 
 # might want to specify types here
-function commutator(a,b)
+function commutator(a, b)
     a * b - b * a
 end
+
+# function to plot a pulse
+function plot()

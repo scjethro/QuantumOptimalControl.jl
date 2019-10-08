@@ -5,6 +5,7 @@ export ClosedProblem, ClosedStateTransfer
 
 using ..pulses
 # thinking about using StaticArrays to store some of the fixed size arrays
+# subtyping AbstractArray is more general, allows SparseArrays to be handled too
 #using StaticArrays
 
 abstract type Problem end
@@ -32,12 +33,15 @@ struct ClosedStateTransfer <: ClosedProblem
     # each problem can have either one or a list of optimal pulses associated with it, 
     # we can then update the amplitude and phases of these as we go?
     optimal_pulse::AbstractArray{OptimalPulse,1}
+    # dimension of the Hilbert space
     dimension::Integer
+    # step size necessary for discrete time evolution
+    step_size::AbstractFloat
 
-    function ClosedStateTransfer(dh, ch, is, fs, dim)
+    function ClosedStateTransfer(dh, ch, is, fs, dim, dt = 0.0)
         # in theory someone could actually specify this as their initial guess pulse
         op = OptimalPulse([], [], 0.0) # just a generic optimal pulse with no initial values
-        new(dh, ch, is, fs, op, dim)
+        new(dh, ch, is, fs, op, dim, dt)
     end
 end
 
